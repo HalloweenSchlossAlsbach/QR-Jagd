@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         instructionsModal.style.display = 'flex';
     }
 
-    // --- KORRIGIERTE LOGIK FÜR DIE BUTTONS ---
     // 4. Zeige die Steuerungs-Buttons an, solange das Spiel noch nicht beendet ist
     if (challengeData.scannedStations.length < TOTAL_STATIONS) {
         showInstructionsBtn.style.display = 'block';
@@ -105,7 +104,8 @@ function showFinalQrCodeView(finalData) {
     const qrCodeContainer = document.getElementById('final-qrcode');
     qrCodeContainer.innerHTML = ''; 
 
-    const baseUrl = 'https://fabse159.github.io/Halloween-Scan-Challenge/scanner.html'; 
+    // --- HIER IST DIE WICHTIGE ÄNDERUNG ---
+    const baseUrl = 'https://halloweenschlossalsbach.github.io/Scan/scanner.html'; 
 
     const nameParam = encodeURIComponent(finalData.name);
     const emailParam = encodeURIComponent(finalData.email);
