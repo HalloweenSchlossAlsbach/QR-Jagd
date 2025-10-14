@@ -104,7 +104,7 @@ function showFinalQrCodeView(finalData) {
     const qrCodeContainer = document.getElementById('final-qrcode');
     qrCodeContainer.innerHTML = ''; 
 
-    // --- HIER IST DIE WICHTIGE ÄNDERUNG ---
+    // --- HIER IST DIE KORRIGIERTE URL ---
     const baseUrl = 'https://halloweenschlossalsbach.github.io/QR-Jagd/scanner.html'; 
 
     const nameParam = encodeURIComponent(finalData.name);
