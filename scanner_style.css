@@ -17,7 +17,7 @@ body {
 header {
     background-color: #1a0000;
     padding: 20px 0;
-    border-bottom: 3px solid #cc0001; /* Geändert */
+    border-bottom: 3px solid #cc0001;
     margin-bottom: 20px;
 }
 
@@ -29,8 +29,9 @@ header {
 
 h1, h2, th {
     font-family: 'Halloween Custom', cursive;
-    color: #cc0001; /* Geändert */
+    color: #cc0001;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    letter-spacing: 7px; /* Geändert */
 }
 
 h1 {
@@ -52,7 +53,7 @@ main {
     background-color: #111;
     border: 1px solid #333;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(204, 0, 1, 0.5); /* Geändert */
+    box-shadow: 0 0 15px rgba(204, 0, 1, 0.5);
 }
 
 #status {
@@ -104,7 +105,7 @@ button:disabled {
 #export-yes-btn { background-color: #28a745; }
 #export-yes-btn:hover:not(:disabled) { background-color: #218838; }
 
-#export-no-btn { background-color: #cc0001; /* Geändert */ }
+#export-no-btn { background-color: #cc0001; }
 #export-no-btn:hover:not(:disabled) { background-color: #c82333; }
 
 #reset-btn { background-color: #6c757d; }
