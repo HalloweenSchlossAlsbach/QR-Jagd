@@ -105,7 +105,7 @@ function showFinalQrCodeView(finalData) {
     qrCodeContainer.innerHTML = ''; 
 
     // --- HIER IST DIE WICHTIGE ÄNDERUNG ---
-    const baseUrl = 'https://halloweenschlossalsbach.github.io/Scan/scanner.html'; 
+    const baseUrl = 'https://halloweenschlossalsbach.github.io/QR-Jagd/scanner.html'; 
 
     const nameParam = encodeURIComponent(finalData.name);
     const emailParam = encodeURIComponent(finalData.email);
