@@ -1,7 +1,4 @@
-@font-face {
-    font-family: 'Halloween Custom';
-    src: url('HalloweenSchrift.otf') format('opentype');
-}
+/* Die @font-face Regel für die Halloween-Schriftart wurde entfernt */
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -27,21 +24,23 @@ header {
     margin-bottom: 10px;
 }
 
+/* Schriftart für Überschriften geändert */
 h1, h2, th {
-    font-family: 'Halloween Custom', cursive;
-    color: #cc0001;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    letter-spacing: 7px;
+    font-family: 'Open Sans', sans-serif; /* Geändert */
+    color: #ffffff; /* Geändert auf Weiß für besseren Kontrast */
+    text-shadow: none; /* Textschatten entfernt */
+    letter-spacing: normal; /* Zeichenabstand zurückgesetzt */
+    font-weight: bold;
 }
 
 h1 {
-    font-size: 2.8em;
+    font-size: 2.2em; /* Angepasste Größe für normale Schrift */
     margin: 0;
     line-height: 1.1;
 }
 
 h2 {
-    font-size: 2.2em;
+    font-size: 1.8em; /* Angepasste Größe für normale Schrift */
     margin-top: 30px;
     margin-bottom: 15px;
 }
@@ -137,8 +136,8 @@ th {
 .sorted-desc::after { content: " ▼"; }
 
 @media (max-width: 768px) {
-    h1 { font-size: 2.2em; }
-    h2 { font-size: 1.8em; }
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.5em; }
     main { padding: 15px; }
     .export-buttons { flex-direction: column; }
 }
