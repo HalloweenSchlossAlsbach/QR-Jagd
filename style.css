@@ -17,7 +17,7 @@ body {
 header {
     background-color: #1a0000;
     padding: 20px 0;
-    border-bottom: 3px solid #cc0001; /* Geändert */
+    border-bottom: 3px solid #cc0001;
 }
 
 .header-logo {
@@ -28,10 +28,10 @@ header {
 
 h1, h2, h3 {
     font-family: 'Halloween Custom', cursive;
-    color: #cc0001; /* Geändert */
+    color: #cc0001;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     margin: 0;
-    letter-spacing: 3px;
+    letter-spacing: 5px; /* Geändert: Zeichenabstand erhöht */
 }
 
 h1 { font-size: 2.8em; line-height: 1.1; }
@@ -53,7 +53,7 @@ main > .view {
     border: 1px solid #333;
     border-radius: 10px;
     padding: 25px;
-    box-shadow: 0 0 15px rgba(204, 0, 1, 0.5); /* Geändert */
+    box-shadow: 0 0 15px rgba(204, 0, 1, 0.5);
     margin-bottom: 30px;
 }
 
@@ -97,19 +97,19 @@ form input[type="text"], form input[type="email"] {
     font-size: 1em;
 }
 form input[type="text"]:focus, form input[type="email"]:focus {
-    border-color: #cc0001; /* Geändert */
+    border-color: #cc0001;
     outline: none;
-    box-shadow: 0 0 8px rgba(204, 0, 1, 0.5); /* Geändert */
+    box-shadow: 0 0 8px rgba(204, 0, 1, 0.5);
 }
 
 .checkbox-group { display: flex; align-items: center; margin-bottom: 15px; }
-.checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-right: 10px; accent-color: #cc0001; /* Geändert */ }
+.checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-right: 10px; accent-color: #cc0001; }
 .checkbox-group label { margin: 0; display: inline; font-size: 0.95em; }
 .checkbox-group a { color: #ff8080; text-decoration: none; }
 .checkbox-group a:hover { text-decoration: underline; }
 
 button {
-    background-color: #cc0001; /* Geändert */
+    background-color: #cc0001;
     color: white;
     font-family: 'Halloween Custom', cursive;
     font-size: 1.5em;
@@ -120,7 +120,7 @@ button {
     width: 100%;
     margin-top: 20px;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    letter-spacing: 2px;
+    letter-spacing: 3px; /* Geändert: Zeichenabstand für Buttons */
 }
 button:hover { background-color: #ff0000; transform: translateY(-2px); }
 
@@ -139,7 +139,7 @@ button:hover { background-color: #ff0000; transform: translateY(-2px); }
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #cc0001; /* Geändert */
+    background-color: #cc0001;
     color: white;
     font-size: 1.8em;
     font-family: 'serif';
@@ -165,12 +165,12 @@ button:hover { background-color: #ff0000; transform: translateY(-2px); }
 }
 .modal-content {
     background-color: #111;
-    border: 2px solid #cc0001; /* Geändert */
+    border: 2px solid #cc0001;
     padding: 30px;
     border-radius: 10px;
     width: 90%;
     max-width: 500px;
-    box-shadow: 0 0 25px rgba(204, 0, 1, 0.7); /* Geändert */
+    box-shadow: 0 0 25px rgba(204, 0, 1, 0.7);
 }
 #close-instructions-btn {
     font-family: 'Open Sans', sans-serif;
@@ -185,25 +185,25 @@ button:hover { background-color: #ff0000; transform: translateY(-2px); }
 .map-button {
     display: inline-block;
     background-color: #111;
-    color: #cc0001; /* Geändert */
+    color: #cc0001;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     font-size: 1em;
     padding: 8px 18px;
     border-radius: 8px;
     text-decoration: none;
-    border: 2px solid #cc0001; /* Geändert */
+    border: 2px solid #cc0001;
     transition: all 0.3s ease;
 }
 .map-button:hover {
-    background-color: #cc0001; /* Geändert */
+    background-color: #cc0001;
     color: #fff;
     transform: translateY(-2px);
 }
 
 footer {
     background-color: #111;
-    border-top: 3px solid #cc0001; /* Geändert */
+    border-top: 3px solid #cc0001;
     padding: 30px 20px;
     margin-top: 40px;
 }
@@ -221,17 +221,17 @@ footer {
     height: 50px;
     border-radius: 50%;
     background-color: #222;
-    border: 2px solid #cc0001; /* Geändert */
-    color: #cc0001; /* Geändert */
+    border: 2px solid #cc0001;
+    color: #cc0001;
     font-size: 1.8em;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 .social-icons a:hover {
-    background-color: #cc0001; /* Geändert */
+    background-color: #cc0001;
     color: #000;
     transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 5px 15px rgba(204, 0, 1, 0.7); /* Geändert */
+    box-shadow: 0 5px 15px rgba(204, 0, 1, 0.7);
 }
 
 @media (max-width: 480px) {
