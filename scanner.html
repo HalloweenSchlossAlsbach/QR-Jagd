@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datensammler Dieburg</title>
+    <link rel="stylesheet" href="scanner_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Halloween Schloss Alsbach Logo" class="header-logo">
+        <h1>Datensammler <br> Dieburg</h1>
+    </header>
+
+    <main>
+        <div id="status" class="info">Lade Daten...</div>
+        
+        <h2 id="count">Gesammelte Daten: 0</h2>
+        <div class="export-buttons">
+            <button id="export-yes-btn" disabled>Export JA</button>
+            <button id="export-no-btn" disabled>Export NEIN</button>
+        </div>
+        <button id="reset-btn" disabled>Datensatz zurücksetzen</button>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th class="sortable" data-sort="name">Name</th>
+                    <th class="sortable" data-sort="email">E-Mail</th>
+                    <th class="sortable" data-sort="marketingConsent">Werbung OK?</th>
+                </tr>
+            </thead>
+            <tbody id="data-table-body">
+                </tbody>
+        </table>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusDiv = document.getElementById('status');
+            const countHeader = document.getElementById('count');
+            const tableBody = document.getElementById('data-table-body');
+            const exportYesBtn = document.getElementById('export-yes-btn');
+            const exportNoBtn = document.getElementById('export-no-btn');
+            const resetBtn = document.getElementById('reset-btn');
+
+            let collectedData = JSON.parse(localStorage.getItem('collectedHalloweenData')) || [];
+            let currentSort = { key: null, direction: 'asc' };
+
+            function sortData(key) {
+                if (currentSort.key === key) {
+                    currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                } else {
+                    currentSort.key = key;
+                    currentSort.direction = 'asc';
+                }
+                const direction = currentSort.direction === 'asc' ? 1 : -1;
+                collectedData.sort((a, b) => {
+                    const valA = a[key];
+                    const valB = b[key];
+                    if (typeof valA === 'boolean') {
+                        return (valA === valB) ? 0 : valA ? -1 * direction : 1 * direction;
+                    }
+                    return valA.localeCompare(valB) * direction;
+                });
+                updateUI();
+            }
+            
+            function updateUI() {
+                countHeader.textContent = `Gesammelte Daten: ${collectedData.length}`;
+                tableBody.innerHTML = '';
+                collectedData.forEach(item => {
+                    const row = tableBody.insertRow();
+                    row.insertCell(0).textContent = item.name;
+                    row.insertCell(1).textContent = item.email;
+                    const consentCell = row.insertCell(2);
+                    consentCell.textContent = item.marketingConsent ? '✅ Ja' : '❌ Nein';
+                });
+
+                const consentYesCount = collectedData.filter(item => item.marketingConsent).length;
+                const consentNoCount = collectedData.filter(item => !item.marketingConsent).length;
+
+                exportYesBtn.disabled = consentYesCount === 0;
+                exportNoBtn.disabled = consentNoCount === 0;
+                resetBtn.disabled = collectedData.length === 0;
+
+                exportYesBtn.textContent = `Export JA (${consentYesCount})`;
+                exportNoBtn.textContent = `Export NEIN (${consentNoCount})`;
+
+                document.querySelectorAll('.sortable').forEach(th => {
+                    th.classList.remove('sorted-asc', 'sorted-desc');
+                    if (th.dataset.sort === currentSort.key) {
+                        th.classList.add(currentSort.direction === 'asc' ? 'sorted-asc' : 'sorted-desc');
+                    }
+                });
+            }
+
+            function processUrlData() {
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.has('name') && urlParams.has('email') && urlParams.has('consent')) {
+                    const data = {
+                        name: urlParams.get('name'),
+                        email: urlParams.get('email'),
+                        marketingConsent: urlParams.get('consent') === 'true'
+                    };
+                    const isDuplicate = collectedData.some(item => item.email === data.email);
+                    if (isDuplicate) {
+                        statusDiv.textContent = 'ACHTUNG: Dieser Teilnehmer wurde bereits erfasst!';
+                        statusDiv.className = 'error';
+                    } else {
+                        collectedData.push(data);
+                        localStorage.setItem('collectedHalloweenData', JSON.stringify(collectedData));
+                        statusDiv.textContent = `Erfolgreich hinzugefügt: ${data.name}`;
+                        statusDiv.className = 'success';
+                    }
+                } else {
+                    statusDiv.textContent = 'Bereit zum Scannen des nächsten QR-Codes.';
+                    statusDiv.className = 'info';
+                }
+                updateUI();
+            }
+
+            function generateAndDownloadCsv(data, filename) {
+                const header = "Name;Email";
+                const rows = data.map(item => {
+                    const name = item.name.replace(/;/g, '');
+                    const email = item.email.replace(/;/g, '');
+                    return `${name};${email}`;
+                });
+                const csvContent = [header, ...rows].join("\n");
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.setAttribute("download", filename);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            document.querySelectorAll('.sortable').forEach(header => {
+                header.addEventListener('click', () => {
+                    sortData(header.dataset.sort);
+                });
+            });
+
+            exportYesBtn.addEventListener('click', () => {
+                const consentYes = collectedData.filter(item => item.marketingConsent);
+                generateAndDownloadCsv(consentYes, 'export_werbung_ja.csv');
+            });
+
+            exportNoBtn.addEventListener('click', () => {
+                const consentNo = collectedData.filter(item => !item.marketingConsent);
+                generateAndDownloadCsv(consentNo, 'export_werbung_nein.csv');
+            });
+
+            resetBtn.addEventListener('click', () => {
+                resetBtn.disabled = true;
+                const isConfirmed = confirm("Bist du sicher, dass du alle gesammelten Daten endgültig löschen möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden.");
+
+                if (isConfirmed) {
+                    collectedData = [];
+                    localStorage.removeItem('collectedHalloweenData');
+                    statusDiv.textContent = 'Alle Daten wurden erfolgreich gelöscht.';
+                    statusDiv.className = 'success';
+                    updateUI();
+                }
+
+                setTimeout(() => {
+                    if (collectedData.length > 0 || !isConfirmed) {
+                        resetBtn.disabled = false;
+                    }
+                }, 5000);
+            });
+
+            processUrlData();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Challenge Dieburg</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <button id="show-instructions-btn" class="info-button" style="display: none;">?</button>
+
+    <div id="instructions-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2>Willkommen zur Challenge!</h2>
+            <ol class="instructions-list">
+                <li>Scanne die QR-Codes, die du am <strong>Ausgang</strong> jeder der 7 Stationen findest.</li>
+                <li>Dein Fortschritt wird dir auf der Hauptseite immer angezeigt. Die Reihenfolge ist egal.</li>
+                <li>Hast du alle Stationen geschafft, gib deinen Namen & E-Mail ein. Entscheide, ob du News & Rabatte erhalten willst. Erstelle dann deinen Preis-QR-Code, zeige ihn an der Kasse vor und erhalte einen Schlüsselanhänger als Geschenk!</li>
+                <li><a href="https://halloweenschlossalsbach.github.io/Lageplan/" target="_blank" class="instruction-link">Hier findest du den Lageplan</a>, um dich zurechtzufinden.</li>
+            </ol>
+            <button id="close-instructions-btn">Verstanden!</button>
+        </div>
+    </div>
+
+    <header>
+        <img src="logo.png" alt="Halloween Schloss Alsbach Logo" class="header-logo">
+        <h1>Scan Challenge <br> Dieburg</h1>
+    </header>
+
+    <div class="main-actions" style="display: none;">
+        <a href="https://halloweenschlossalsbach.github.io/Lageplan/" class="map-button" target="_blank">Lageplan anzeigen</a>
+    </div>
+
+    <main>
+        <section id="progress-view" class="view">
+            <h2>Dein Fortschritt</h2>
+            <div id="stations-list">
+                </div>
+        </section>
+        
+        <section id="completion-form-view" class="view">
+            <h2>Fast geschafft!</h2>
+            <p>Du hast alle Stationen gefunden! Fülle das Formular aus, um deinen QR-Code für den Preis zu erhalten.</p>
+            <form id="completion-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" required>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="privacy-consent" required>
+                    <label for="privacy-consent">Ich habe die <a href="https://www.halloweenaufschlossalsbach.de/datenschutz/" target="_blank">Datenschutzerklärung</a> gelesen und stimme ihr zu.</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="marketing-consent">
+                    <label for="marketing-consent">Ich möchte über zukünftige Events informiert werden.</label>
+                </div>
+                <button type="submit" id="create-qr-btn">WEITER</button>
+            </form>
+        </section>
+
+        <section id="final-qrcode-view" class="view">
+            <h2>Dein Preis-QR-Code!</h2>
+            <p>Zeige diesen Code dem Team in der Event-Zentrale, um deinen Preis abzuholen.</p>
+            <div id="final-qrcode"></div>
+        </section>
+    </main>
+
+    <footer>
+        <h3>Folge uns!</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/halloween.schlossalsbach?igsh=MXVhb3I2bGpyZnFyaA==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@halloweenschlossa?_t=ZN-90Rosul5szT&_r=1" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/share/163muYxxCf/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

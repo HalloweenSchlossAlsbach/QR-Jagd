@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'Halloween Custom';
+    src: url('HalloweenSchrift.otf') format('opentype');
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #000;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #1a0000;
+    padding: 20px 0;
+    border-bottom: 3px solid #b30000;
+    margin-bottom: 20px;
+}
+
+.header-logo {
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Alle Texte mit der Custom-Schriftart werden jetzt blutrot */
+h1, h2, th {
+    font-family: 'Halloween Custom', cursive;
+    color: #b30000; /* Blutrot */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    font-size: 2.8em;
+    margin: 0;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(179, 0, 0, 0.5);
+}
+
+#status {
+    background-color: #333;
+    border: 1px solid #555;
+    color: #eee;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.success { background-color: #28a745; border-color: #1e7e34; color: white; }
+.info { background-color: #004085; border-color: #002752; color: white; }
+.error { background-color: #dc3545; border-color: #b21f2d; color: white; }
+
+button {
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+    color: #888;
+}
+
+.export-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.export-buttons button { flex: 1; width: auto; }
+
+#export-yes-btn { background-color: #28a745; }
+#export-yes-btn:hover:not(:disabled) { background-color: #218838; }
+
+#export-no-btn { background-color: #b30000; }
+#export-no-btn:hover:not(:disabled) { background-color: #c82333; }
+
+#reset-btn { background-color: #6c757d; }
+#reset-btn:hover:not(:disabled) { background-color: #5a6268; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+    color: #eee;
+}
+
+th {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: left;
+    background-color: #222;
+}
+
+.sortable { cursor: pointer; user-select: none; }
+.sortable:hover { background-color: #333; }
+.sorted-asc::after { content: " ▲"; }
+.sorted-desc::after { content: " ▼"; }
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    main { padding: 15px; }
+    .export-buttons { flex-direction: column; }
+}
