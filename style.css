@@ -103,10 +103,19 @@ form input[type="text"]:focus, form input[type="email"]:focus {
 }
 
 .checkbox-group { display: flex; align-items: center; margin-bottom: 15px; }
-.checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-right: 10px; accent-color: #cc0001; }
-.checkbox-group label { margin: 0; display: inline; font-size: 0.95em; }
+.checkbox-group input[type="checkbox"] { width: 20px; height: 20px; margin-right: 10px; accent-color: #cc0001; flex-shrink: 0; }
+.checkbox-group label { margin: 0; display: inline; font-size: 0.95em; text-align: left; }
 .checkbox-group a { color: #ff8080; text-decoration: none; }
 .checkbox-group a:hover { text-decoration: underline; }
+
+/* NEUER STIL FÜR DEN NEWSLETTER-HINWEIS */
+.newsletter-info {
+    font-size: 0.95em;
+    color: #ccc;
+    text-align: left;
+    margin-bottom: 5px; /* Weniger Abstand zur Checkbox */
+    margin-top: 20px; /* Mehr Abstand zum vorherigen Feld */
+}
 
 button {
     background-color: #cc0001;
@@ -151,31 +160,33 @@ button:hover { background-color: #ff0000; transform: translateY(-2px); }
     line-height: 36px;
     text-align: center;
 }
+
+/* KORREKTUR FÜR DIE ZENTRIERUNG DER POP-UPS */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw; /* Volle Breite des Viewports */
+    height: 100vh; /* Volle Höhe des Viewports */
     background-color: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1002;
-    padding: 15px; /* Padding hier, um Inhalt nicht an den Rand zu quetschen */
+    padding: 15px; /* Padding hier behalten, um Inhalt vom Rand wegzuhalten */
+    box-sizing: border-box; /* Padding in die Größe einrechnen */
 }
 .modal-content {
     background-color: #111;
     border: 2px solid #cc0001;
     padding: 30px;
     border-radius: 10px;
-    width: 100%;
+    width: 100%; /* Volle Breite innerhalb des Paddings */
     max-width: 500px;
     box-shadow: 0 0 25px rgba(204, 0, 1, 0.7);
-    box-sizing: border-box; /* Stellt sicher, dass Padding in die Breite eingerechnet wird */
+    box-sizing: border-box;
 }
 
-/* Stile für den Warnhinweis */
 .warning-text {
     background-color: #4d0000;
     border: 1px solid #cc0001;
@@ -189,15 +200,12 @@ button:hover { background-color: #ff0000; transform: translateY(-2px); }
 .warning-text strong {
     color: #fff;
 }
-/* Zusätzlicher Stil für den alleinstehenden Hinweis */
 .standalone-warning {
-    margin-top: 0; /* Kein extra Abstand nach oben */
-    font-size: 1.1em; /* Etwas größer */
+    margin-top: 0;
+    font-size: 1.1em;
 }
-
-/* Stil für das zweite Pop-up */
 .warning-modal h2 {
-    margin-top: 0; /* Kein extra Abstand für die Überschrift */
+    margin-top: 0;
 }
 
 #close-instructions-btn, #close-warning-btn {
@@ -205,7 +213,7 @@ button:hover { background-color: #ff0000; transform: translateY(-2px); }
     font-size: 1em;
     font-weight: bold;
     padding: 10px 20px;
-    margin-top: 25px; /* Mehr Abstand zum Text */
+    margin-top: 25px;
     width: auto;
     min-width: 150px;
 }
