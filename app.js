@@ -15,23 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeInstructionsBtn = document.getElementById('close-instructions-btn');
     const showInstructionsBtn = document.getElementById('show-instructions-btn');
     const mapButtonContainer = document.querySelector('.main-actions');
-    // NEU: Elemente für das zweite Pop-up
     const incognitoWarningModal = document.getElementById('incognito-warning-modal');
     const closeWarningBtn = document.getElementById('close-warning-btn');
 
     let challengeData = JSON.parse(localStorage.getItem('halloweenChallenge')) || { scannedStations: [] };
     const urlParams = new URLSearchParams(window.location.search);
     const currentStationId = urlParams.get('station');
-    const isFirstVisitEver = !localStorage.getItem('halloweenChallenge'); // Prüfen, ob *überhaupt* schonmal was gespeichert wurde
+    const isFirstVisitEver = !localStorage.getItem('halloweenChallenge');
 
-    let showSecondPopup = false; // Flag, um zu steuern, ob das zweite Pop-up gezeigt werden soll
+    let showSecondPopup = false;
 
     if (currentStationId && !challengeData.scannedStations.includes(currentStationId)) {
         if (STATIONS.some(s => s.id === currentStationId)) {
-            // Nur beim allerersten erfolgreichen Scan die Pop-ups triggern
             if (isFirstVisitEver && challengeData.scannedStations.length === 0) {
                 instructionsModal.style.display = 'flex';
-                showSecondPopup = true; // Merken, dass das zweite Pop-up folgen soll
+                showSecondPopup = true;
             }
             challengeData.scannedStations.push(currentStationId);
             localStorage.setItem('halloweenChallenge', JSON.stringify(challengeData));
@@ -45,10 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         showProgressViewContent(challengeData);
     }
     
-    // Anleitung auch zeigen, wenn die Seite ohne Scan aufgerufen wird und noch leer ist
     if (isFirstVisitEver && challengeData.scannedStations.length === 0 && !currentStationId) {
         instructionsModal.style.display = 'flex';
-        showSecondPopup = true; // Auch hier das zweite Pop-up vorbereiten
+        showSecondPopup = true;
     }
 
     if (challengeData.scannedStations.length < TOTAL_STATIONS) {
@@ -56,26 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
         mapButtonContainer.style.display = 'block';
     }
 
-    // Event Listener für Pop-ups
     closeInstructionsBtn.addEventListener('click', () => {
         instructionsModal.style.display = 'none';
-        // Nur wenn das Flag gesetzt ist (beim ersten Mal), das zweite Pop-up zeigen
         if (showSecondPopup) {
             incognitoWarningModal.style.display = 'flex';
-            showSecondPopup = false; // Flag zurücksetzen, damit es nur einmal passiert
+            showSecondPopup = false;
         }
     });
     closeWarningBtn.addEventListener('click', () => {
         incognitoWarningModal.style.display = 'none';
     });
     showInstructionsBtn.addEventListener('click', () => {
-        // Sicherstellen, dass das zweite Pop-up nicht angezeigt wird, wenn man die Anleitung später aufruft
         showSecondPopup = false; 
         instructionsModal.style.display = 'flex';
     });
 });
 
-// Der Rest der app.js bleibt unverändert (completion-form submit, showView, showProgressViewContent, showFinalQrCodeView)
 document.getElementById('completion-form').addEventListener('submit', (event) => {
     event.preventDefault(); 
     const name = document.getElementById('name').value;
