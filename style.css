@@ -162,22 +162,24 @@ button:hover { background-color: #ff0000; transform: translateY(-2px); }
     align-items: center;
     justify-content: center;
     z-index: 1002;
+    padding: 15px; /* Padding hier, um Inhalt nicht an den Rand zu quetschen */
 }
 .modal-content {
     background-color: #111;
     border: 2px solid #cc0001;
     padding: 30px;
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     max-width: 500px;
     box-shadow: 0 0 25px rgba(204, 0, 1, 0.7);
+    box-sizing: border-box; /* Stellt sicher, dass Padding in die Breite eingerechnet wird */
 }
 
-/* NEUER STIL FÜR DEN WARNHINWEIS */
+/* Stile für den Warnhinweis */
 .warning-text {
-    background-color: #4d0000; /* Dunkelroter Hintergrund */
+    background-color: #4d0000;
     border: 1px solid #cc0001;
-    color: #ffdddd; /* Helles Rot für Text */
+    color: #ffdddd;
     padding: 10px;
     border-radius: 5px;
     margin-top: 20px;
@@ -185,15 +187,25 @@ button:hover { background-color: #ff0000; transform: translateY(-2px); }
     text-align: center;
 }
 .warning-text strong {
-    color: #fff; /* Weiß für Hervorhebungen */
+    color: #fff;
+}
+/* Zusätzlicher Stil für den alleinstehenden Hinweis */
+.standalone-warning {
+    margin-top: 0; /* Kein extra Abstand nach oben */
+    font-size: 1.1em; /* Etwas größer */
 }
 
-#close-instructions-btn {
+/* Stil für das zweite Pop-up */
+.warning-modal h2 {
+    margin-top: 0; /* Kein extra Abstand für die Überschrift */
+}
+
+#close-instructions-btn, #close-warning-btn {
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     font-weight: bold;
     padding: 10px 20px;
-    margin-top: 20px;
+    margin-top: 25px; /* Mehr Abstand zum Text */
     width: auto;
     min-width: 150px;
 }
