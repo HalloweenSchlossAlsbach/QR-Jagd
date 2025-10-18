@@ -108,13 +108,12 @@ form input[type="text"]:focus, form input[type="email"]:focus {
 .checkbox-group a { color: #ff8080; text-decoration: none; }
 .checkbox-group a:hover { text-decoration: underline; }
 
-/* NEUER STIL FÜR DEN NEWSLETTER-HINWEIS */
 .newsletter-info {
     font-size: 0.95em;
     color: #ccc;
     text-align: left;
-    margin-bottom: 5px; /* Weniger Abstand zur Checkbox */
-    margin-top: 20px; /* Mehr Abstand zum vorherigen Feld */
+    margin-bottom: 5px;
+    margin-top: 20px;
 }
 
 button {
@@ -160,28 +159,26 @@ button:hover { background-color: #ff0000; transform: translateY(-2px); }
     line-height: 36px;
     text-align: center;
 }
-
-/* KORREKTUR FÜR DIE ZENTRIERUNG DER POP-UPS */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* Volle Breite des Viewports */
-    height: 100vh; /* Volle Höhe des Viewports */
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1002;
-    padding: 15px; /* Padding hier behalten, um Inhalt vom Rand wegzuhalten */
-    box-sizing: border-box; /* Padding in die Größe einrechnen */
+    padding: 15px;
+    box-sizing: border-box;
 }
 .modal-content {
     background-color: #111;
     border: 2px solid #cc0001;
     padding: 30px;
     border-radius: 10px;
-    width: 100%; /* Volle Breite innerhalb des Paddings */
+    width: 100%;
     max-width: 500px;
     box-shadow: 0 0 25px rgba(204, 0, 1, 0.7);
     box-sizing: border-box;
@@ -268,6 +265,22 @@ footer {
     color: #000;
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 5px 15px rgba(204, 0, 1, 0.7);
+}
+
+/* NEUE STILE FÜR DIE FOOTER-LINKS */
+.footer-links {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #aaa;
+}
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
 }
 
 @media (max-width: 480px) {
