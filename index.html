@@ -18,26 +18,25 @@
             <ol class="instructions-list">
                 <li>Scanne die QR-Codes am <strong>Ausgang</strong> jeder der 7 Stationen. Dein Fortschritt wird live angezeigt.</li>
                 <li>Sind alle Stationen geschafft, erscheint ein Formular. Gib dort deinen Namen & E-Mail ein.</li>
-                <li>Bestätige das Formular, um deinen Preis-QR-Code zu erstellen. Zeige diesen dem gehörnten Folterknecht am <strong>Folterplatz</strong> (letzte Station) vor und erhalte einen Schlüsselanhänger als Belohnung!</li>
+                <li>Bestätige das Formular, um deinen Preis-QR-Code zu erstellen. Zeige diesen dem gehörnten Folterknecht am <strong>Folterplatz</strong> vor und erhalte einen Schlüsselanhänger als Belohnung!</li>
                 <li>Im <a href="https://halloweenschlossalsbach.github.io/Event-Guide/" target="_blank" class="instruction-link">Event-Guide</a> findest du alle wichtigen Infos und den Lageplan.</li>
-                <li><strong>Bonus-Tipp:</strong> Setze am Ende den Haken, um News & exklusive Rabatte für zukünftige Events per Mail zu erhalten!</li>
             </ol>
             <p class="warning-text">
-                <strong>Wichtig:</strong> Bitte nutze <strong>keinen privaten Browser-Modus</strong> (Inkognito), da dein Fortschritt sonst verloren gehen kann!
+                <strong>Wichtig:</strong> Bitte nutze <strong>keinen privaten Browser-Modus</strong> (Inkognito), da dein Fortschritt sonst verloren geht!
             </p>
-            <button id="close-instructions-btn">Verstanden!</button> </div>
+            <button id="close-instructions-btn">Verstanden!</button>
+        </div>
     </div>
 
     <div id="incognito-warning-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content warning-modal">
             <h2>Wichtiger Hinweis!</h2>
             <p class="warning-text standalone-warning">
-                Bitte nutze <strong>keinen privaten Browser-Modus</strong> (Inkognito), da dein Fortschritt sonst verloren gehen kann!
+                Bitte nutze <strong>keinen privaten Browser-Modus</strong> (Inkognito), da dein Fortschritt sonst verloren geht!
             </p>
             <button id="close-warning-btn">Verstanden!</button>
         </div>
     </div>
-
 
     <header>
         <img src="logo.png" alt="Halloween Schloss Alsbach Logo" class="header-logo">
@@ -67,10 +66,10 @@
                     <input type="checkbox" id="privacy-consent" required>
                     <label for="privacy-consent">Ich habe die <a href="https://www.halloweenaufschlossalsbach.de/datenschutz/" target="_blank">Datenschutzerklärung</a> gelesen und stimme ihr zu.</label>
                 </div>
+                <p class="newsletter-info">Bleib auf dem Laufenden! Erhalte News & Rabatte für zukünftige Events per Mail:</p>
                 <div class="checkbox-group">
                     <input type="checkbox" id="marketing-consent">
-                    <label for="marketing-consent">Ich möchte über zukünftige Events informiert werden.</label>
-                </div>
+                    <label for="marketing-consent">Ja, ich möchte informiert werden.</label> </div>
                 <button type="submit" id="create-qr-btn">WEITER</button>
             </form>
         </section>
